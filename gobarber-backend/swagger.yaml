@@ -865,3 +865,103 @@ paths:
                   }
                   name: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTM5MjQ0NzIsImV4cCI6MTYxNDAxMDg3Miwic3ViIjoiMTY0NjMzMTYtMTU1ZC00M2I4LTg0MWQtMjYzYTc0NjEzYzY0In0.kjKz3eBXMJcUpchM2wSXTTSVrAbLRO_tAF2166-vh4o'
       security: [ ]
+      # (Existing YAML content)
+
+components:
+  securitySchemes:
+    JWT:
+      description: 'JWT Bearer'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    Appointments:
+      required:
+        - provider_id
+        - date
+      properties:
+        provider_id:
+          type: string
+        date:
+          type: string
+      example:
+        provider_id: '4129c527-67c1-4fc4-a091-526011d74a48'
+        date: '2021-03-09 09:00:00'
+    Users:
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: 'Go Barber User'
+        example: 'docs@gobarberapp.net'
+        password: 'pass321456'
+    Sessions:
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: 'docs@gobarberapp.net'
+        password: 'pass321456'
+    ProfileUpdate:
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        old_password:
+          type: string
+        password:
+          type: string
+        password_confirmation:
+          type: string
+      required:
+        - name
+        - email
+      example:
+        name: 'Go Barber User'
+        email: 'team5@gobarberapp.net'
+        old_password: 'old_password'
+        password: 'new_password'
+        password_confirmation: 'new_password'
+    InternalServerError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Internal server error.'
+    UnauthorizedError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Missing JWT token.'
+    MailAreadyUsedError:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      example:
+        status: 'error'
+        message: 'Email already used.'
+    AppointmentAlreadyBookedError:
+      properties
